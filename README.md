@@ -103,7 +103,7 @@ project_root = os.path.abspath('.')
 hiddenimports = collect_submodules('libs')
 
 a = Analysis(
-    ['labelimg.py'],
+    ['labelImg.py'],
     pathex=[project_root],
     binaries=[],
     datas=[('libs', 'libs')],

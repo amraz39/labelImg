@@ -9,6 +9,9 @@ jobs:
       PIPENV_IGNORE_VIRTUALENVS: 1
     steps:
       - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
       - name: Setup Python Environment
         run: |
           pip3 install --break-system-packages pipenv
@@ -42,6 +45,7 @@ jobs:
           pyrcc5 -o libs/resources.py resources.qrc
       - name: Package LabelImg
         run: |
+          Remove-Item -Recurse -Force dist, build -ErrorAction SilentlyContinue
           pyinstaller labelimg.spec
       - name: Archive Windows build
         run: |
@@ -62,6 +66,7 @@ jobs:
           pyrcc5 -o libs/resources.py resources.qrc
       - name: Package LabelImg
         run: |
+          rm -rf dist build
           pyinstaller labelimg.spec
       - name: Archive Linux build
         run: |

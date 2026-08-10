@@ -15,7 +15,7 @@ All credit for the original application, design, and codebase goes to the origin
 
 No application logic was modified. The changes below only concern **building a standalone Windows executable** with PyInstaller, which the original project did not ship:
 
-1. Added `labelimg.spec` — a PyInstaller spec file configured to:
+1. Updated `labelimg.spec` — a PyInstaller spec file configured to:
    - Include the local `libs/` package correctly (`collect_submodules('libs')`, `datas=[('libs', 'libs')]`), since PyInstaller's static analysis doesn't always detect this local package on its own.
    - Disable UPX compression (`upx=False`), which was found to corrupt the bundled Python standard library and cause `ModuleNotFoundError: No module named 'json'` at runtime.
    - Bundle the app icon (`labelImg_icon.ico`).
